@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2021 at 01:53 PM
+-- Generation Time: Mar 27, 2021 at 02:13 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -41,8 +41,16 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`, `createdAt`, `updatedAt`) VALUES
-(8, 'XI RPL 1', 'Rekayasa Perangkat Lunak', '2021-03-17 10:14:48', '2021-03-17 10:14:48'),
-(9, 'XI RPL 3', 'Rekayasa Perangkat Lunak', '2021-03-17 10:19:48', '2021-03-17 10:19:48');
+(8, 'XI RPL 1', 'Rekayasa Perangkat Lunak', '2021-03-17 10:14:48', '2021-03-25 23:16:32'),
+(9, 'XI RPL 2', 'Rekayasa Perangkat Lunak', '2021-03-17 10:19:48', '2021-03-25 23:16:38'),
+(11, 'XI RPL 3', 'Rekayasa Perangkat Lunak', '2021-03-19 14:48:54', '2021-03-25 23:31:48'),
+(12, 'XI RPL 4', 'Rekayasa Perangkat Lunak', '2021-03-19 14:49:02', '2021-03-19 14:49:02'),
+(13, 'XI RPL 5', 'Rekayasa Perangkat Lunak', '2021-03-19 14:49:08', '2021-03-19 14:49:08'),
+(15, 'XI TKJ 1', 'Teknik Komputer dan Jaringan', '2021-03-19 14:49:47', '2021-03-19 14:49:47'),
+(16, 'XI TKJ 2', 'Teknik Komputer dan Jaringan', '2021-03-19 14:49:52', '2021-03-19 14:49:52'),
+(17, 'XI TKJ 3', 'Teknik Komputer dan Jaringan', '2021-03-19 14:49:57', '2021-03-19 14:49:57'),
+(18, 'XI TKJ 4', 'Teknik Komputer dan Jaringan', '2021-03-19 14:50:03', '2021-03-19 14:50:03'),
+(19, 'XI TKJ 5', 'Teknik Komputer dan Jaringan', '2021-03-19 14:50:07', '2021-03-25 23:33:48');
 
 -- --------------------------------------------------------
 
@@ -68,7 +76,7 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `nisn`, `tgl_bayar`, `bulan_dibayar`, `tahun_dibayar`, `id_spp`, `jumlah_bayar`, `createdAt`, `updatedAt`) VALUES
-(3, 5, '1002', '2021-03-17', 'Februari diubah ya', '2021', 1, 300000, '2021-03-17 12:45:02', '2021-03-17 12:45:02');
+(23, 5, '1024', '2021-03-27', 'Januari', '2021', 3, 200000, '2021-03-27 12:13:00', '2021-03-27 12:13:00');
 
 -- --------------------------------------------------------
 
@@ -92,7 +100,8 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id_petugas`, `username`, `password`, `nama_petugas`, `level`, `image`, `createdAt`, `updatedAt`) VALUES
-(5, 'nana', '202cb962ac59075b964b07152d234b70', 'Na Jaemin', 'admin', 'img-1615969344412.jpg', '2021-03-17 04:08:30', '2021-03-17 08:22:24');
+(5, 'nana', '202cb962ac59075b964b07152d234b70', 'Na Jaemin', 'admin', 'img-1615969344412.jpg', '2021-03-17 04:08:30', '2021-03-17 08:22:24'),
+(19, 'doy', '202cb962ac59075b964b07152d234b70', 'Doyoung', 'petugas', 'img-1616847237568.jpg', '2021-03-27 12:13:57', '2021-03-27 12:13:57');
 
 -- --------------------------------------------------------
 
@@ -141,7 +150,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `id_kelas`, `alamat`, `no_telp`, `id_spp`, `username`, `password`, `image`, `createdAt`, `updatedAt`) VALUES
-('1002', '321', 'Xiao Dejun', 8, 'Asli China, tapi lagi asrama di Korea', '08938269', 1, 'dejun', '202cb962ac59075b964b07152d234b70', 'img-1615984234407.jpg', '2021-03-17 12:30:34', '2021-03-17 12:30:34');
+('1024', '122', 'Nakamoto Yuta', 13, 'disana', '92831903', 3, 'yuta', '202cb962ac59075b964b07152d234b70', 'img-1616831763953.jpg', '2021-03-27 07:56:03', '2021-03-27 07:56:03');
 
 -- --------------------------------------------------------
 
@@ -162,8 +171,10 @@ CREATE TABLE `spp` (
 --
 
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`, `createdAt`, `updatedAt`) VALUES
-(1, 2021, 300000, '2021-03-17 12:06:05', '2021-03-17 12:06:05'),
-(2, 2021, 500000, '2021-03-17 12:06:16', '2021-03-17 12:06:16');
+(1, 2022, 300000, '2021-03-17 12:06:05', '2021-03-26 13:53:12'),
+(2, 2021, 500000, '2021-03-17 12:06:16', '2021-03-17 12:06:16'),
+(3, 2021, 200000, '2021-03-19 14:51:48', '2021-03-19 14:51:48'),
+(4, 2021, 100000, '2021-03-19 14:51:58', '2021-03-19 14:51:58');
 
 --
 -- Indexes for dumped tables
@@ -180,9 +191,9 @@ ALTER TABLE `kelas`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
-  ADD KEY `id_petugas` (`id_petugas`),
-  ADD KEY `nisn` (`nisn`),
-  ADD KEY `id_spp` (`id_spp`);
+  ADD KEY `pembayaran_ibfk_1` (`id_petugas`),
+  ADD KEY `pembayaran_ibfk_2` (`nisn`),
+  ADD KEY `pembayaran_ibfk_3` (`id_spp`);
 
 --
 -- Indexes for table `petugas`
@@ -202,8 +213,8 @@ ALTER TABLE `sequelizemeta`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nisn`),
-  ADD KEY `id_kelas` (`id_kelas`),
-  ADD KEY `id_spp` (`id_spp`);
+  ADD KEY `siswa_ibfk_1` (`id_kelas`),
+  ADD KEY `siswa_ibfk_2` (`id_spp`);
 
 --
 -- Indexes for table `spp`
@@ -219,25 +230,25 @@ ALTER TABLE `spp`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `spp`
 --
 ALTER TABLE `spp`
-  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -247,16 +258,16 @@ ALTER TABLE `spp`
 -- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`),
-  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`),
-  ADD CONSTRAINT `pembayaran_ibfk_3` FOREIGN KEY (`id_spp`) REFERENCES `siswa` (`id_spp`);
+  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pembayaran_ibfk_3` FOREIGN KEY (`id_spp`) REFERENCES `siswa` (`id_spp`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `siswa`
 --
 ALTER TABLE `siswa`
-  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`),
-  ADD CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`id_spp`) REFERENCES `spp` (`id_spp`);
+  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`id_spp`) REFERENCES `spp` (`id_spp`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
