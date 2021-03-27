@@ -3,7 +3,7 @@ const models = require("../models/index")
 const spp = models.spp
 const app = express()
 
-const auth = require("../auth")
+const auth = require("../auth-admin")
 app.use(auth)
 
 app.use(express.json())

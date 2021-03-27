@@ -23,13 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       // relation to spp
-      this.hasOne(models.spp, {
+      this.belongsTo(models.spp, {
         foreignKey: "id_spp",
         as: "spp"
       })
 
       // relation to kelas
-      this.hasOne(models.kelas, {
+      this.belongsTo(models.kelas, {
         foreignKey: "id_kelas",
         as: "kelas"
       })

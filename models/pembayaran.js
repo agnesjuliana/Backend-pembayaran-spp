@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // relation to petugas
-      this.hasOne(models.petugas, {
+      this.belongsTo(models.petugas, {
         foreignKey: "id_petugas",
         as: "petugas"
       })
 
       // relation to siswa
-      this.hasOne(models.siswa, {
+      this.belongsTo(models.siswa, {
         foreignKey: "nisn",
         as: "siswa"
       })
 
       // relation to siswa
-      this.hasOne(models.siswa, {
+      this.belongsTo(models.siswa, {
         foreignKey: "id_spp",
         as: "spp"
       })

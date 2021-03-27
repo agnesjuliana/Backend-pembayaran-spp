@@ -12,8 +12,10 @@ const path = require("path")
 const fs = require("fs")
 
 const jwt = require("jsonwebtoken")
-const SECRET_KEY = "cobaajadulu"
-const auth = require("../auth")
+const SECRET_KEY_PENGURUS = "pastibisa"
+const SECRET_KEY_ADMIN = "kanbisa"
+const authPetugas = require("../auth-petugas")
+const authAdmin = require("../auth-admin")
 
 //storage
 const storage = multer.diskStorage({
@@ -26,13 +28,29 @@ const storage = multer.diskStorage({
 })
 let upload = multer({storage:storage})
 
-app.get("/", auth, async(req,res)=>{
+
+
+
+// end point for petugas
+app.get("/for-petugas/:id_petugas", authPetugas, async(req,res)=>{
+    let param = {
+        id_petugas:req.params.id_petugas
+    }
+    let result = await petugas.findAll({where:param})
+    res.json(result)
+    console.log(auth)
+})
+
+
+
+// end point for admin
+app.get("/", authAdmin, async(req,res)=>{
     let result = await petugas.findAll()
     res.json(result)
     console.log(auth)
 })
 
-app.post("/", upload.single("image"), async(req,res)=>{
+app.post("/", authAdmin, upload.single("image"), async(req,res)=>{
     if (!req.file){
         res.json({
             message: "No uploaded file"
@@ -56,7 +74,7 @@ app.post("/", upload.single("image"), async(req,res)=>{
     }
 })
 
-app.put("/", auth, upload.single("image"), async(req,res)=>{
+app.put("/",  authAdmin, upload.single("image"), async(req,res)=>{
     let param = await {id_petugas:req.body.id_petugas}
     let data = await {
         username: req.body.username,
@@ -89,7 +107,7 @@ app.put("/", auth, upload.single("image"), async(req,res)=>{
     })
 })
 
-app.delete("/:id_petugas", auth, async(req,res)=>{
+app.delete("/:id_petugas", authAdmin, async(req,res)=>{
     let param = await {id_petugas:req.params.id_petugas}
     let result = await petugas.findOne({where: param})
     let oldImageName = result.image
@@ -116,14 +134,25 @@ app.post("/login", async(req,res)=>{
     let result = await petugas.findOne({where:param})
     if(result){
         let payload = JSON.stringify(result)
-        let token = jwt.sign(payload, SECRET_KEY)
+        let role = (result.level).toLowerCase()
 
-        res.json({
-            logged: true,
-            data: result,
-            role: result.level,
-            token: token
-        })
+        if(role === "admin"){
+            let token = jwt.sign(payload, SECRET_KEY_ADMIN)
+            res.json({
+                logged: true,
+                data: result,
+                role: role,
+                token: token
+            })
+        }else{
+            let token = jwt.sign(payload, SECRET_KEY_PENGURUS)
+            res.json({
+                logged: true,
+                data: result,
+                role: role,
+                token: token
+            })
+        }
     }else{
         res.json({
             logged: false,

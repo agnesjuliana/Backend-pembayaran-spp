@@ -1,5 +1,8 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
+app.use(cors())
+
 
 const kelas = require("./router/endpoint-kelas")
 const petugas = require("./router/endpoint-petugas")
