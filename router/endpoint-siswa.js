@@ -4,15 +4,17 @@ const siswa = models.siswa
 const app = express()
 const md5 = require("md5")
 
+const multer = require("multer")
+const path = require("path")
+const fs = require("fs")
+
 const SECRET_KEY_SISWA = "cobaajadulu"
 const authSiswa = require("../auth-siswa")
 const authAdmin = require("../auth-admin")
 const authPetugas = require("../auth-petugas")
 const jwt = require("jsonwebtoken")
 
-const multer = require("multer")
-const path = require("path")
-const fs = require("fs")
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -25,7 +27,6 @@ const storage = multer.diskStorage({
         cal(null, "img-" + Date.now() + path.extname(file.originalname))
     }
 })
-
 let upload = multer({ storage: storage })
 
 // end point for siswa

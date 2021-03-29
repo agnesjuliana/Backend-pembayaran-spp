@@ -12,10 +12,11 @@ const path = require("path")
 const fs = require("fs")
 
 const jwt = require("jsonwebtoken")
-const SECRET_KEY_PENGURUS = "pastibisa"
 const SECRET_KEY_ADMIN = "kanbisa"
-const authPetugas = require("../auth-petugas")
 const authAdmin = require("../auth-admin")
+const SECRET_KEY_PENGURUS = "pastibisa"
+const authPetugas = require("../auth-petugas")
+
 
 //storage
 const storage = multer.diskStorage({
